@@ -1,0 +1,22 @@
+[
+  {
+    "url": "products",
+    "title": "все"
+  },
+  {
+    "url": "products_home",
+    "title": "дом"
+  },
+  {
+    "url": "products_office",
+    "title": "офис"
+  },
+  {
+    "url": "products_modern",
+    "title": "модерн"
+  },
+  {
+    "url": "products_classic",
+    "title": "классика"
+  }
+]
