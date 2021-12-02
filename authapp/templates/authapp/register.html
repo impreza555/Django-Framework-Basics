@@ -5,9 +5,9 @@
         {% csrf_token %}
         {{ register_form.as_p }}
         <br>
-        <input class="form-control" type="submit" value="зарегистрироваться">
+        <input class="form-control" type="submit" value="регистрация">
     </form>
     <button class="btn btn-round form-control">
-        <a href="{% url 'auth:register' %}" class="">зарегистрироваться</a>
+        <a href="{% url 'auth:register' %}" class="">регистрация</a>
     </button>
 {% endblock %}
