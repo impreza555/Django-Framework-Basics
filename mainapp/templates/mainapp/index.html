@@ -5,7 +5,7 @@
 {% block menu %}
 <div class="slider">
     <div class="header clearfix">
-        <a href="index.html" class="logo"></a>
+        <a href="{% url 'index' %}" class="logo"></a>
         <ul class="menu">
             {% include 'mainapp/includes/inc_main_menu.html' %}
         </ul>
@@ -37,7 +37,7 @@
                 <div class="text">
                     <img src="{% static 'img/icon-hover.png' %}" alt="img">
                     <h4>{{ product.name }}</h4>
-                    <p>{{ product.short_desc }}. </p>
+                    <p>{{ product.short_desc }}</p>
                 </div>
             </a>
         </div>
