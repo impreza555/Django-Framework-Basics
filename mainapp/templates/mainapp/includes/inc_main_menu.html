@@ -3,6 +3,7 @@
 <li><a href="{% url 'contact' %}" {% if request.resolver_match.url_name == 'contact' %}class="active"{% endif %}>контакты</a></li>
 {% if user.is_authenticated %}
     <li><a href="{% url 'auth:edit' %}">{{ user.first_name|default:'пользователь' }}</a></li>
+    <li><img src="/media/{{ user.avatar }}" alt="" class="avatar_index"></li>
     <li><a href="{% url 'auth:logout' %}">выйти</a></li>
 {% else %}
     <li><a href="{% url 'auth:register' %}">регистрация</a></li>

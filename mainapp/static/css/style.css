@@ -1070,3 +1070,8 @@ td:first-child {
 .related-products a:hover .text{
 	display: block;
 }
+.avatar_index {
+    width: 23px;
+    border-radius: 50%;
+    border: 1px solid #8c8c8c;
+}
