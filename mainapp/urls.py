@@ -3,6 +3,6 @@ from mainapp import views as mainapp
 
 app_name = 'mainapp'
 urlpatterns = [
-    path('', mainapp.products, name='index'),
+    path('', mainapp.products, name='products'),
     path('category/<int:pk>/', mainapp.products, name='category'),
 ]

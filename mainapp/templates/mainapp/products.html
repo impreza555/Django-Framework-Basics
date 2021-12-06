@@ -3,16 +3,7 @@
 {% block menu %}
 <div class="hero-white">
     <div class="header clearfix">
-        <a href="{% url 'index' %}" class="logo"></a>
-        <ul class="menu">
-            {% include 'mainapp/includes/inc_main_menu.html' %}
-        </ul>
-        <a href="#" class="search"></a>
-        <a href="{% url 'basket:view' %}" class="basket">
-            <span>
-                {% if basket %} {{ basket|length }} {% endif %}
-            </span>
-        </a>
+        {% include 'mainapp/includes/inc_main_menu.html' %}
     </div>
 </div>
 {% endblock %}
@@ -50,7 +41,7 @@
             <h3 class="big-bold">{{ hot_product.name }}</h3>
             <h3 class="red">горячее предложение</h3>
             <p class="price">{{hot_product.price|floatformat:2 }}<span>руб</span></p>
-            <a href="#" class="red-button">
+            <a href="{% url 'basket:add' hot_product.pk %}" class="red-button">
                 заказать <i class="fa fa-chevron-right" aria-hidden="true"></i>
             </a>
             <div class="description-text">
@@ -62,12 +53,12 @@
     <div class="related">
         <div class="title clearfix">
             <h2>Похожие продукты</h2>
-            <a class="explore" href="#">показать все <img src="{% static 'img/arrow.png' %}" alt=""></a>
+            <a class="explore" href="{% url 'products:category' 0 %}">показать все <img src="{% static 'img/arrow.png' %}" alt=""></a>
         </div>
         <div class="related-products clearfix">
             {% for product in same_products %}
                 <div class="block">
-                    <a href="#"><img src="/media/{{ product.image }}" height="368" alt="">
+                    <a href="#"><img src="/media/{{ product.image }}" height="368" alt="{{ product.name }}">
                         <div class="text">
                             <img src="{% static 'img/icon-hover.png' %}" alt="img">
                             <h4>{{ product.name }}</h4>

@@ -1,17 +1,21 @@
 import random
-
 from django.shortcuts import render
 from mainapp.models import ProductCategory, Product
 from basketapp.models import Basket
 from django.shortcuts import get_object_or_404
 
 
+def get_basket(user):
+    if user.is_authenticated:
+        return Basket.objects.filter(user=user).order_by('product__category')
+    return []
 
 
 def index(request):
     context = {
         'title': 'Главная',
         'products': Product.objects.all()[:4],
+        'basket': get_basket(request.user),
     }
     return render(request, 'mainapp/index.html', context)
 
@@ -19,10 +23,6 @@ def index(request):
 def products(request, pk=None):
     title = 'Продукты'
     links_menu = ProductCategory.objects.all()
-    basket = []
-    if request.user.is_authenticated:
-        basket = Basket.objects.filter(user=request.user)
-
     if pk is not None:
         if pk == 0:
             products = Product.objects.all().order_by('price')
@@ -36,7 +36,7 @@ def products(request, pk=None):
             'links_menu': links_menu,
             'category': category,
             'products': products,
-            'basket': basket,
+            'basket': get_basket(request.user),
         }
         return render(request, 'mainapp/products_list.html', context)
 
@@ -47,6 +47,7 @@ def products(request, pk=None):
         'links_menu': links_menu,
         'same_products': same_products,
         'hot_product': hot_product,
+        'basket': get_basket(request.user),
     }
     return render(request, 'mainapp/products.html', context)
 
@@ -54,5 +55,6 @@ def products(request, pk=None):
 def contact(request):
     context = {
         'title': 'Контакты',
+        'basket': get_basket(request.user),
     }
     return render(request, 'mainapp/contact.html', context)
