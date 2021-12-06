@@ -1,3 +1,5 @@
+import random
+
 from django.shortcuts import render
 from mainapp.models import ProductCategory, Product
 from basketapp.models import Basket
@@ -38,11 +40,13 @@ def products(request, pk=None):
         }
         return render(request, 'mainapp/products_list.html', context)
 
+    hot_product = random.sample(list(Product.objects.all().order_by()), 3)[0]
     same_products = Product.objects.all()[3:5]
     context = {
         'title': title,
         'links_menu': links_menu,
         'same_products': same_products,
+        'hot_product': hot_product,
     }
     return render(request, 'mainapp/products.html', context)
 
