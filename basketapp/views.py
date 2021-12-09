@@ -4,8 +4,13 @@ from mainapp.models import Product
 
 
 def basket(request):
-    content = {}
-    return render(request, 'basketapp/basket.html', content)
+    title = 'корзина'
+    basket_items = Basket.objects.filter(user=request.user).order_by('product__category')
+    context = {
+        'title': title,
+        'basket_items': basket_items,
+    }
+    return render(request, 'basketapp/basket.html', context)
 
 
 def basket_add(request, pk):
@@ -19,6 +24,8 @@ def basket_add(request, pk):
 
 
 def basket_remove(request, pk):
-    content = {}
-    return render(request, 'basketapp/basket.html', content)
+    basket_record = get_object_or_404(Basket, pk=pk)
+    basket_record.delete()
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
 
