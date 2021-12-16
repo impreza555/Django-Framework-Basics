@@ -23,8 +23,8 @@ def user_create(request):
     title = 'пользователи/создание'
     if request.method == 'POST':
         user_form = ShopUserRegisterForm(request.POST, request.FILES)
-    if user_form.is_valid():
-        user_form.save()
+        if user_form.is_valid():
+            user_form.save()
         return HttpResponseRedirect(reverse('admin:users'))
     else:
         user_form = ShopUserRegisterForm()
