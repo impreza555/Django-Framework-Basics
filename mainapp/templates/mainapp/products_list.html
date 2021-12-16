@@ -22,12 +22,12 @@
 
                 {% for product in products %}
                     <div class="block">
-                        <a href="{% url 'basket:add' product.pk %}">
+                        <a href="{% url 'products:product' product.pk %}">
                             <img src="/media/{{ product.image }}" height="370" alt="{{ product.short_desc }}">
                             <div class="text">
                                 <img src="{% static 'img/icon-hover.png' %}" alt="hover">
                                     <h4>{{ product.name }}</h4>
-                                    <p>{{ product.description }}</p>
+                                    <p>{{ product.short_desc }}</p>
                             </div>
                         </a>
                     </div>
