@@ -10,7 +10,11 @@
         <input class="form-control" type="submit" value="сохранить">
     </form>
     <button class="btn btn-round form-control last">
-         <a href="{% url 'index' %}" class="">на главную</a>
+        <a href="{% url 'index' %}" class="">
+         на главную
+        </a>
     </button>
-    <div class="user_avatar"><img src="/media/{{ user.avatar }}"></div>
+    <div class="user_avatar">
+        <img src="/media/{{ user.avatar|default:'users_avatars/default.png' }}">
+    </div>
 {% endblock %}

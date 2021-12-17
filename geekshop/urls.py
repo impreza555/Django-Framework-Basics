@@ -20,12 +20,13 @@ from django.conf.urls.static import static
 from mainapp import views as mainapp
 
 urlpatterns = [
+    path('dadmin/', admin.site.urls),
     path('', mainapp.index, name='index'),
     path('contact/', mainapp.contact, name='contact'),
     path('products/', include('mainapp.urls', namespace='products')),
     path('auth/', include('authapp.urls', namespace='auth')),
     path('basket/', include('basketapp.urls', namespace='basket')),
-    path('admin/', include('adminapp.urls', namespace='admin')),
+    path('admin/', include('adminapp.urls', namespace='adminapp')),
 ]
 
 if settings.DEBUG:

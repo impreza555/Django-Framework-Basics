@@ -3,12 +3,12 @@
 {% block content %}
     <div class="users_list">
         <button class="new_user">
-            <a href={% url 'admin:user_create' %}>
+            <a href={% url 'adminapp:user_create' %}>
                 новый пользователь
             </a>
         </button>
         {% for object in objects %}
-            <div class="user_record {% if not object.is_active %}not_active{% endif %}">
+            <div class="user_record {% if not object.is_active %} not_active {% endif %}">
                 <img src="/media/{{ object.avatar|default:'users_avatars/default.png' }}" alt="{{ object.username }}">
                 <div class="user_role">
                     {% if object.is_superuser %}
@@ -17,12 +17,12 @@
                         пользователь
                     {% endif %}
                     <button>
-                        <a href={% url 'admin:user_update' object.pk %}>
+                        <a href={% url 'adminapp:user_update' object.pk %}>
                             редактировать
                         </a>
                     </button>
                     <button>
-                        <a href={% url 'admin:user_delete' object.pk %}>
+                        <a href={% url 'adminapp:user_delete' object.pk %}>
                             удалить
                         </a>
                     </button>
