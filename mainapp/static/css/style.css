@@ -1810,3 +1810,7 @@ html, body {
     border-radius: 20%;
     border: 1px solid #8c8c8c;
 }
+
+#id_is_staff, #id_is_superuser, #id_is_active {
+    -webkit-appearance: checkbox;
+}
