@@ -9,6 +9,14 @@ class ShopUserAdminEditForm(ShopUserEditForm):
         model = ShopUser
         fields = '__all__'
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            if field_name == 'is_active' or field_name == 'is_superuser' or field_name == 'is_staff':
+                field.widget.attrs['class'] = 'form-check-input'
+            else:
+                field.widget.attrs['class'] = 'form-control'
+
 
 class ProductCategoryEditForm(forms.ModelForm):
     class Meta:
