@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
     <div class="h2 text-center head">
-        Редактирование профиля
+        Редактирование товара
     </div>
     <form class="form-horizontal" method="post" enctype="multipart/form-data">
         {% csrf_token %}
@@ -10,8 +10,8 @@
         <input class="form-control" type="submit" value="сохранить">
     </form>
     <button class="btn btn-round form-control last">
-        <a href="{% url 'adminapp:users' %}">
-            к списку пользователей
+        <a href={% url 'adminapp:products' edit_product.category %}>
+            к списку продуктов
         </a>
     </button>
 {% endblock %}
