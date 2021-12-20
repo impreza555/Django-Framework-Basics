@@ -2,13 +2,13 @@
 {% load static %}
 {% block content %}
     <div class="user_delete">
-        Уверены, что хотите удалить продукт <strong>{{ product_to_delete.name }}</strong>?
-        <form action="{% url 'adminapp:product_delete' product_to_delete.pk %}" method="post">
+        Уверены, что хотите удалить категорию <strong>{{ object.name }}</strong>?
+        <form action="{% url 'adminapp:category_delete' object.pk %}" method="post">
             {% csrf_token %}
             <input class="btn btn-danger" type="submit" value="удалить">
         </form>
         <button class="btn btn-success">
-            <a href="{% url 'adminapp:products' product_to_delete.category.pk %}">
+            <a href="{% url 'adminapp:categories' %}">
                 Отмена
             </a>
         </button>
