@@ -1,5 +1,6 @@
 {% extends 'authapp/base.html' %}
 {% load static %}
+{% load my_tags %}
 {% block content %}
     <div class="h2 text-center head">
         Редактирование профиля
@@ -15,6 +16,6 @@
         </a>
     </button>
     <div class="user_avatar">
-        <img src="/media/{{ user.avatar|default:'users_avatars/default.png' }}">
+        <img src="{{ user.avatar|media_folder_users }}">
     </div>
 {% endblock %}
