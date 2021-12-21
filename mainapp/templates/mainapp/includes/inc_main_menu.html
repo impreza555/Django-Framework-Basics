@@ -1,3 +1,4 @@
+{% load my_tags %}
 <a href="{% url 'index' %}" class="logo"></a>
 <ul class="menu">
     <li>
@@ -16,7 +17,7 @@
             </a>
         </li>
         <li>
-            <img src="/media/{{ user.avatar|default:'users_avatars/default.png' }}" alt="" class="avatar_menu">
+            <img src="{{ user.avatar|media_folder_users }}" alt="{{ user.first_name|default:'Пользователь' }}" class="avatar_menu">
         </li>
     {% endif %}
     {% if user.is_superuser %}
